@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Días - Panel Administrativo</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">📋</div>
+        <div>
+          <h2>Control de Días</h2>
+          <small>Sistema Administrativo</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" id="mainNavigation"></nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <div class="user-details">
+            <div class="user-name" id="navUserName">Cargando...</div>
+            <div class="user-role" id="navUserRole">...</div>
+          </div>
+        </div>
+        <button class="btn btn-outline btn-sm" style="width:100%; color:#fff; border-color:rgba(255,255,255,0.3);" id="logoutButton">
+          🚪 Cerrar Sesión
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div class="header-left">
+          <button class="menu-toggle" id="menuToggle">☰</button>
+          <h1 class="page-title" id="pageTitle">Sistema de Control</h1>
+        </div>
+        <div class="header-right">
+          <div id="globalAppLoader" style="display: none; align-items: center; margin-right: 15px;">
+            <span class="spinner" style="width: 18px; height: 18px; border: 2px solid #ccc; border-top-color: #fc712b; border-radius: 50%; animation: spin 1s linear infinite;"></span>
+          </div>
+          <button class="header-alerts-btn" id="headerAlertsBtn" title="Alertas">
+            🔔
+            <span class="alert-badge hidden" id="headerAlertBadge">0</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="page-content" id="pageContent">
+        <section id="dashboardView" class="app-view" style="display:none;"></section>
+        <section id="workersView" class="app-view" style="display:none;"></section>
+        <section id="requestsView" class="app-view" style="display:none;"></section>
+        <section id="calendarView" class="app-view" style="display:none;"></section>
+        <section id="authorizationsView" class="app-view" style="display:none;"></section>
+        <section id="historyView" class="app-view" style="display:none;"></section>
+        <section id="reportsView" class="app-view" style="display:none;"></section>
+        <section id="alertsView" class="app-view" style="display:none;"></section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modalContainer">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal</h3>
+        <button class="modal-close" id="modalClose" onclick="Utils.closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/validators.js"></script>
+  
+  <script src="js/modules/dashboard.js"></script>
+  <script src="js/modules/workers.js"></script>
+  <script src="js/modules/requests.js"></script>
+  <script src="js/modules/calendar.js"></script>
+  <script src="js/modules/reports.js"></script>
+  <script src="js/modules/alerts.js"></script>
+  <script src="js/modules/history.js"></script>
+  <script src="js/modules/authorizations.js"></script>
+  
+  <script src="js/app.js"></script>
+</body>
+</html>
