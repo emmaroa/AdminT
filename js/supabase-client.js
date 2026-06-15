@@ -1,6 +1,4 @@
-/**
- * Cliente Supabase - Implementación nativa basada en el Esquema SQL de Producción
- */
+
 const SupabaseClient = {
   client: null,
 
